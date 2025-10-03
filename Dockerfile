@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-selkies:ubuntunoble
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:ubuntunoble
 
 # set version label
 ARG BUILD_DATE
@@ -11,7 +11,6 @@ LABEL maintainer="aptalca"
 
 ENV \
   CUSTOM_PORT="8080" \
-  CUSTOM_HTTPS_PORT="8181" \
   HOME="/config" \
   TITLE="Calibre" \
   QTWEBENGINE_DISABLE_SANDBOX="1"
@@ -19,7 +18,7 @@ ENV \
 RUN \
   echo "**** add icon ****" && \
   curl -o \
-    /usr/share/selkies/www/icon.png \
+    /kclient/public/www/icon.png \
     https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/calibre-icon.png && \
   echo "**** install runtime packages ****" && \
   apt-get update && \
