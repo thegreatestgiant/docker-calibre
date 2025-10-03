@@ -1,3 +1,22 @@
+# DEPRICATED
+
+Linuxserver has upgraded to using selkies instead of kasmvnc, which introduced breaking changes.
+It now requires https which breaks a lot of my config so I'm going to retire the project. The latest working version is 99. Here is the cli code to run it.
+
+```bash
+docker run -d \
+  --name=calibre \
+  --security-opt seccomp=unconfined \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=America/New_York \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -v config:/config \
+  --restart unless-stopped \
+  thegreatestgiant/calibre:99
+```
+
 # Docker-Calibre
 
 ### docker cli
