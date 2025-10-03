@@ -1,6 +1,6 @@
 # Docker-Calibre
 
-### docker cli 
+### docker cli
 
 ```bash
 docker run -d \
@@ -10,6 +10,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=America/New_York \
   -p 8080:8080 \
+  -p 8181:8181 \
   -p 8081:8081 \
   -v config:/config \
   --restart unless-stopped \
@@ -35,6 +36,7 @@ services:
       - ./config:/config
     ports:
       - 8080:8080
+      - 8181:8181
       - 8081:8081
     restart: unless-stopped
 ```
@@ -46,28 +48,36 @@ https://kindle-epub-fix.netlify.app/
 ```
 
 _(Not as good)_
+
 ```
 https://draft2digital.com/book/epubcheck/upload
 ```
 
 # Updating
+
 ```
-git clone https://github.com/thegreatestgiant/docker-calibre.git
+git clone https://github.com/thegreatestgiant/docker-calibre.git && cd docker-calibre
 ```
+
 do that into home linux and then upload the files again
 also add rsync to dockerfile
 
-
 OR
+
 ```
+git config pull.rebase true
 git pull https://github.com/linuxserver/docker-calibre.git
 git config --local rerere.enabled true
 ```
+
 For rebasing you have to git add and rm and for things that modify both you can generally do
+
 ```
 git checkout --ours .
 ```
+
 and if it doesn't work then do
+
 ```
 git restore --theirs .
 ```
